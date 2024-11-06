@@ -1,0 +1,90 @@
+{
+  "version": "0.1.0",
+  "name": "rcat_game_sc",
+  "instructions": [
+    {
+      "name": "pay",
+      "accounts": [
+        {
+          "name": "user",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "server",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "feeAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "params",
+          "type": {
+            "defined": "PayParams"
+          }
+        }
+      ]
+    },
+    {
+      "name": "registerWhitelist",
+      "accounts": [
+        {
+          "name": "user",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "server",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    }
+  ],
+  "types": [
+    {
+      "name": "PayParams",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "fee",
+            "type": "u64"
+          },
+          {
+            "name": "gameTxId",
+            "type": "u64"
+          }
+        ]
+      }
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "InvalidFeeAccount",
+      "msg": "Invalid fee acocunt"
+    },
+    {
+      "code": 6001,
+      "name": "InvalidServerSigner",
+      "msg": "Invalid server signer"
+    }
+  ]
+}
